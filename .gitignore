@@ -1,0 +1,4 @@
+# Project exclude paths
+/configserver/target/
+/eurekaserver/target/
+/order/target/
