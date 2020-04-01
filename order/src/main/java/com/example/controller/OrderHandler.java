@@ -13,6 +13,7 @@ public class OrderHandler {
 
     @GetMapping("/index")
     public String index() {
+        System.out.println("enter 8040");
         return "current port: " + this.port;
     }
 }

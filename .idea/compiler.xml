@@ -9,13 +9,19 @@
         <module name="eurekaserver" />
         <module name="configserver" />
         <module name="order" />
+        <module name="menu" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="consumer" target="1.13" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="configserver" options="-parameters" />
+      <module name="consumer" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
+      <module name="menu" options="-parameters" />
       <module name="order" options="-parameters" />
       <module name="springcloud-orderingsystem" options="-parameters" />
     </option>
