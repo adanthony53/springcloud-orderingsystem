@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eurekaserver" />
+        <module name="client" />
         <module name="configserver" />
         <module name="order" />
         <module name="menu" />
@@ -18,6 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="client" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="consumer" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
