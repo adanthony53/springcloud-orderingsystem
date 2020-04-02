@@ -18,7 +18,7 @@
 		select count(id) from t_menu;
 	</select>
 
-	<select id="findById" parameterType="long" resultType="Menu">
+	<select id="findById" parameterType="long" resultMap="menuMap">
 		select * from t_menu where id = #{id}
 	</select>
 
@@ -27,7 +27,7 @@
 	</insert>
 
   <update id="update" parameterType="Menu">
-		update t_menu set name = #{name}, price = #{price}, flavor = #{flavor} where id = #{id}
+		update t_menu set name = #{name}, price = #{price}, flavor = #{flavor}, tid = #{type.id} where id = #{id}
 	</update>
 
   <delete id="deleteById" parameterType="long">

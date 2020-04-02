@@ -42,8 +42,22 @@ public class MenuHandler {
 
     @GetMapping("/save")
     public String save(Menu menu) {
-        //System.out.println("enter step 1");
         menuFeign.save(menu);
+        return "redirect:/menu/redirect/index";
+    }
+
+    @GetMapping("/findById/{id}")
+    public ModelAndView findById(@PathVariable("id") long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("menu_update");
+        modelAndView.addObject("menu", menuFeign.findById(id));
+        modelAndView.addObject("list", menuFeign.findTypes());
+        return modelAndView;
+    }
+
+    @GetMapping("/update")
+    public String update(Menu menu) {
+        menuFeign.update(menu);
         return "redirect:/menu/redirect/index";
     }
 
