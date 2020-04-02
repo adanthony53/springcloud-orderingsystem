@@ -23,7 +23,7 @@
 	</select>
 
   <insert id="save" parameterType="Menu">
-		insert into t_menu (name, price, flavor) values (#{name}, #{price}, #{flavor})
+		insert into t_menu (name, price, flavor, tid) values (#{name}, #{price}, #{flavor}, #{type.id})
 	</insert>
 
   <update id="update" parameterType="Menu">

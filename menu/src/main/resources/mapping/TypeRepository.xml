@@ -6,4 +6,7 @@
 		select * from t_type where id = #{id}
 	</select>
 
+	<select id="findAll" resultType="Type">
+		select * from t_type
+	</select>
 </mapper>
