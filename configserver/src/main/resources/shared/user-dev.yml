@@ -1,8 +1,8 @@
 server:
-  port: 8020
+  port: 8040
 spring:
   application:
-    name: menu
+    name: user
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/orderingsystem?useUnicode=true&characterEncoding=UTF-8
