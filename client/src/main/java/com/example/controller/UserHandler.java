@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PUT})
 public class UserHandler {
@@ -29,13 +31,10 @@ public class UserHandler {
 
     @GetMapping("/save")
     public String save(User user) {
-        long millis = System.currentTimeMillis();
-        java.sql.Date date = new java.sql.Date(millis);
-        user.setRegisterdate(date);
+        user.setRegisterdate(new Date());
         userFeign.save(user);
         return "redirect:/user/redirect/user_manage";
     }
-
 
     @GetMapping("/redirect/{location}")
     public String redirect(@PathVariable("location") String location) {
