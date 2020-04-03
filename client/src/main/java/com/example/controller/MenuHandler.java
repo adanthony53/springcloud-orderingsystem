@@ -61,12 +61,6 @@ public class MenuHandler {
         return "redirect:/menu/redirect/index";
     }
 
-
-
-
-
-    // TODO: other methods for Menu service
-
     @GetMapping("/redirect/{location}")
     public String redirect(@PathVariable("location") String location) {
         return location;

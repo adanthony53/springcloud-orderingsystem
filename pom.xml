@@ -15,6 +15,7 @@
     <module>menu</module>
     <module>client</module>
     <module>user</module>
+    <module>account</module>
   </modules>
 
   <properties>
