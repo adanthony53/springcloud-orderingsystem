@@ -1,3 +1,13 @@
 server:
   port: 8010
-#TODO: add sql server and mybatis
+spring:
+  application:
+    name: order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/orderingsystem?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: oneAPTX4869piece # TODO: password
+mybatis:
+  mapper-locations: classpath:/mapping/*.xml
+  type-aliases-package: com.example.entity
