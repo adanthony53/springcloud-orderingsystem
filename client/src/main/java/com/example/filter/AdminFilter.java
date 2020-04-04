@@ -1,6 +1,5 @@
 package com.example.filter;
 
-import com.example.entity.Admin;
 import com.example.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 @Component
 @WebFilter(urlPatterns = {"/index.html", "/main.html"}, filterName = "userFilter")
-public class UserFilter implements Filter {
+public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -24,8 +23,8 @@ public class UserFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-        Admin admin = (Admin) session.getAttribute("admin");
-        if (admin == null) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
             response.sendRedirect("login.html");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
