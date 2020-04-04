@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Order;
+import com.example.entity.OrderVO;
 import com.example.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,9 +17,11 @@ public class OrderHandler {
     @Autowired
     private OrderRepository orderRepository;
 
-    @GetMapping("/findAll/{index}/{limit}")
-    public List<Order> findAll(@PathVariable("index") int index, @PathVariable("limit") int limit) {
-        return orderRepository.findAll(index, limit);
+    @GetMapping("/findByUid/{uid}/{index}/{limit}")
+    public OrderVO findByUid(@PathVariable("uid") long uid,
+                             @PathVariable("index") int index,
+                             @PathVariable("limit") int limit) {
+        return new OrderVO(0, "msg", orderRepository.countByUid(uid), orderRepository.findByUid(uid, index, limit));
     }
 
     @PostMapping("/save")

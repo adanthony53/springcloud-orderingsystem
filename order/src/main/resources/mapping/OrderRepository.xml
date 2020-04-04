@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.repository.OrderRepository">
+
+	<resultMap id="orderMap" type="Order">
+		<id column="id" property="id"></id>
+		<result column="date" property="date"></result>
+		<result column="state" property="state"></result>
+		<association property="menu" select="com.example.repository.MenuRepository.findById" column="mid"></association>
+	</resultMap>
+
+	<select id="findByUid" resultMap="orderMap">
+		select id, mid, date, state from t_order where uid = #{param1} limit #{param2}, #{param3}
+	</select>
+
+  <insert id="save" parameterType="Order">
+		insert into t_order (uid, mid, date, state) values (#{user.id}, #{menu.id}, #{date}, 0)
+	</insert>
+
+	<select id="count" resultType="int">
+		select count(id) from t_order;
+	</select>
+
+	<select id="countByUid" parameterType="long" resultType="int">
+		select count(id) from t_order where uid = #{param1};
+	</select>
+</mapper>

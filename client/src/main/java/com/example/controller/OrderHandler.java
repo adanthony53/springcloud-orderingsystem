@@ -1,8 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.Menu;
-import com.example.entity.User;
-import com.example.entity.Order;
+import com.example.entity.*;
 import com.example.feign.MenuFeign;
 import com.example.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,14 @@ public class OrderHandler {
     //@Autowired
     //private MenuFeign menuFeign;
 
+    @GetMapping("/findByUid")
+    @ResponseBody
+    public OrderVO findByUid(@RequestParam("page") int page, @RequestParam("limit") int limit, HttpSession session) {
+        long uid = ((User) session.getAttribute("user")).getId();
+        int index = (page - 1) * limit;
+        return orderFeign.findByUid(uid, index, limit);
+    }
+
     @GetMapping("/save/{mid}")
     public String save(@PathVariable("mid") int mid, HttpSession session) {
         Order order = new Order();
@@ -35,4 +41,6 @@ public class OrderHandler {
         orderFeign.save(order);
         return "index";
     }
+
+
 }

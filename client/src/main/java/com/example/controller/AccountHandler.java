@@ -44,6 +44,11 @@ public class AccountHandler {
         return "redirect:/login.html";
     }
 
+    @GetMapping("/redirect/{location}")
+    public String redirect(@PathVariable("location") String location) {
+        return location;
+    }
+
     private User convertUser(LinkedHashMap<String, Object> map) {
         User user = new User();
         user.setId(Long.parseLong(map.get("id").toString()));
