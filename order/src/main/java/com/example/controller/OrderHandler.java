@@ -24,9 +24,19 @@ public class OrderHandler {
         return new OrderVO(0, "msg", orderRepository.countByUid(uid), orderRepository.findByUid(uid, index, limit));
     }
 
+    @GetMapping("/findAll/{index}/{limit}")
+    public OrderVO findAll(@PathVariable("index") int index, @PathVariable("limit") int limit) {
+        return new OrderVO(0, "msg", orderRepository.count(), orderRepository.findAll(index, limit));
+    }
+
     @PostMapping("/save")
     public void save(@RequestBody Order order) {
         order.setDate(new Date());
         orderRepository.save(order);
+    }
+
+    @PutMapping("/updateState/{aid}/{id}")
+    public void updateState(@PathVariable("aid") long aid, @PathVariable("id") long id) {
+        orderRepository.updateState(aid, id);
     }
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Component
-@WebFilter(urlPatterns = {"/index.html", "/main.html"}, filterName = "userFilter")
+@WebFilter(urlPatterns = {"/index.html", "/main.html"}, filterName = "adminFilter")
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

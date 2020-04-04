@@ -7,6 +7,7 @@
 		<result column="date" property="date"></result>
 		<result column="state" property="state"></result>
 		<association property="menu" select="com.example.repository.MenuRepository.findById" column="mid"></association>
+		<association property="user" select="com.example.repository.UserRepository.findById" column="uid"></association>
 	</resultMap>
 
 	<select id="findByUid" resultMap="orderMap">
@@ -18,10 +19,18 @@
 	</insert>
 
 	<select id="count" resultType="int">
-		select count(id) from t_order;
+		select count(id) from t_order where state = 0;
 	</select>
 
 	<select id="countByUid" parameterType="long" resultType="int">
 		select count(id) from t_order where uid = #{param1};
 	</select>
+
+	<select id="findAll" resultMap="orderMap">
+		select id, mid, uid, date, state from t_order where state = 0 limit #{param1}, #{param2}
+	</select>
+
+	<update id="updateState" parameterType="long">
+		update t_order set state = 1, aid = #{param1} where id = #{param2}
+	</update>
 </mapper>
