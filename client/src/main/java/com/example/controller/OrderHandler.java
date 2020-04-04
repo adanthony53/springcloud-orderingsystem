@@ -50,9 +50,10 @@ public class OrderHandler {
     }
 
     @GetMapping("/updateState/{id}")
-    public String updateState(@PathVariable("id") long id) {
-        //long aid = ((Admin) session.getAttribute("admin")).getId();
-        long aid = 1L;
+    public String updateState(@PathVariable("id") long id, HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        Long aidLong = admin.getId();
+        long aid = aidLong.longValue();
         orderFeign.updateState(aid, id);
         return "order_handler";
     }
