@@ -42,5 +42,8 @@ public class OrderHandler {
         return "index";
     }
 
-
+    @GetMapping("/redirect/{location}")
+    public String redirect(@PathVariable("location") String location) {
+        return location;
+    }
 }

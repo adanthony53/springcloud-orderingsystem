@@ -34,7 +34,7 @@ public class AccountHandler {
         } else {
             Admin admin = convertAdmin(map);
             session.setAttribute("admin", admin);
-            return "";
+            return "main";
         }
     }
 
