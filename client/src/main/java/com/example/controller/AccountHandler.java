@@ -36,7 +36,12 @@ public class AccountHandler {
             session.setAttribute("admin", admin);
             return "";
         }
+    }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login.html";
     }
 
     private User convertUser(LinkedHashMap<String, Object> map) {
